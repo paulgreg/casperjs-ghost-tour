@@ -7,10 +7,10 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>CasperJS: The Ghost Tour</title>
+	<title>CasperJS, PhantomJS &amp; cie</title>
 	
-	<meta name="description" content="A browser testing utility based on PhantomJS and Javascript">
-	<meta name="author" content="Aurélien Thieriot">
+	<meta name="description" content="Un outil de tests web bâti sur PhantomJS et JavaScript">
+	<meta name="author" content="Grégory Paul, basé sur des slides d’Aurélien Thieriot">
 	<meta name="viewport" content="width=1024, user-scalable=no">
 	
 	<!-- Core and extension CSS files -->
@@ -27,6 +27,7 @@
 	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
 	<link rel="stylesheet" href="./css/transition/horizontal-slide.css">
     <style>
+        #casper-logo { position: fixed; bottom: -40px; right: 10px; z-index: 10; }
         ol,ul { list-style-type: square; }
         .deck-container mark { background: none; color: red; }
         .deck-container mark.alt { color: blue; }
@@ -36,43 +37,45 @@
 
 <body class="deck-container">
 
+<img id="casper-logo" src="imgs/casperjs-logo.png">
+
 <section class="slide" id="title-slide">
-   <h1>The Ghost Tour<h1>
+   <h1>Une histoire de fantômes<h1>
    <h2>CasperJS</h2>
 </section>
 
 <section class="slide" id="what-slide">
-   <h2>What is it?</h2>
+   <h2>CasperJS ?</h2>
    <ol>
-      <li class="slide" id="comment-tool">
-         <h3>A browser testing utility, written in Javascript<h3>
+      <li class="slide" id="comment-tool" >
+         <h3>Un outil de test d’interfaces web, écrit en JavaScript<h3>
       </li>
-      <li class="slide" id="comment-write">
-         <h3>It let you write your tests in Javascript (Or coffeescript)<h3>
+      <li class="slide" id="comment-write" >
+         <h3>vous écrivez vos tests en JavaScript (ou en CoffeeScript)<h3>
       </li>
-      <li class="slide" id="comment-phantom">
-         <h3>And runs them in PhantomJS<h3>
+      <li class="slide" id="comment-phantom" >
+         <h3>ils se lancent sous PhantomJS<h3>
       </li>
    </ol>
 </section>
 
 <section class="slide" id="phantom">
-   <h2>PhantomJS?</h2>
+   <h2>PhantomJS ?</h2>
    <ol>
-      <li class="slide">
-         <h3>A headless webkit<h3>
+      <li class="slide" >
+      <h3>Un navigateur webKit en mode headless (sans <abbr title="Interface Homme Machine">IHM</abbr>)<h3>
       </li>
-      <li class="slide">
+      <li class="slide" >
          <h3>Support Javascript<h3>
       </li>
-      <li class="slide">
-         <h3>Handle DOM, CSS selector<h3>
+      <li class="slide" >
+         <h3>Interprête le DOM, les sélecteurs CSS<h3>
       </li>
-      <li class="slide">
-         <h3>Even Canvas and SVG<h3>
+      <li class="slide" >
+         <h3>Même Canvas et SVG<h3>
       </li>
-      <li class="slide">
-         <h3>Allows you to take screenshots<h3>
+      <li class="slide" >
+         <h3>vous pouvez prendre des captures d’écrans<h3>
       </li>
    </ol>
 </section>
@@ -81,10 +84,10 @@
    <h2>no-node.js</h2>
    <ol>
       <li>
-         <h3>It's not a Node.js library<h3>
+         <h3>Cela n’a rien à voir avec node.js<h3>
       </li>
       <li>
-         <h3>It's a standalone tool<h3>
+         <h3>C’est un outil autonome (nécessite PhantomJS toutefois)<h3>
       </li>
    </ol>
 </section>
@@ -93,25 +96,13 @@
    <h2>Alternatives</h2>
    <ol>
       <li>
-         <h3>HTMLUnit. Headless. Reimplementation of browser capacities<h3>
+         <h3>HTMLUnit. Headless. Reimplementation des fonctionnalités d’un navigateur<h3>
       </li>
       <li>
-         <h3>Behat / Mink. BDD oriented. Gherkin syntax + PHP. Multiple browsers.<h3>
-      </li>
-      <li>
-         <h3>Selenium. Java based. Multiple browsers.<h3>
+         <h3>Selenium. Plusieurs languages dont Java. Plusieurs navigateurs.<h3>
       </li>
       <li>
          <h3>Cucumber. BDD. Gherkin + Ruby + Selenium.<h3>
-      </li>
-      <li>
-         <h3>Capybara. Multiple browsers<h3>
-      </li>
-      <li>
-         <h3>etc...<h3>
-      </li>
-      <li>
-         <h3>etc...<h3>
       </li>
       <li>
          <h3>etc...<h3>
@@ -120,42 +111,45 @@
 </section>
 
 <section class="slide" id="schema">
-   <h2>A Schema is worth a thousand words</h2>
+   <h2>Une image plutôt qu’un long discours</h2>
    <img src="./schema.png" /> 
 </section>
 
 <section class="slide" id="advices">
-   <h2>Advices on Browser testing</h2>
+   <h2>Quelques conseils sur les tests d’IHM</h2>
    <ol>
-      <li>
-         <h3>/!\ Only my humble opinion /!\<h3>
+      <li class="slide">
+         <h3>Ils sont importants !</h3>
       </li>
       <li class="slide">
-         <h3>DO IT. It's important to test the whole stack<h3>
+         <h3>Il est utile de tester toute la "stack" !</h3>
       </li>
       <li class="slide">
-         <h3>Integration tests should be in your CI<h3>
+         <h3>Les tests doivent être lancées régulièrement depuis votre usine logicielle</h3>
       </li>
       <li class="slide">
-         <h3>Don't try to test everything. KISS.<h3>
+         <h3>Les tests d’intégrations ne remplacent pas les tests manuels...</h3>
       </li>
       <li class="slide">
-         <h3>Integration tests are not here to test your design<h3>
+         <h3>mais donnent un bon indicateur de confiance</h3>
       </li>
       <li class="slide">
-         <h3>Try to avoid Javascript scenarios<h3>
+         <h3>Les tests d’intégrations ne remplacent pas les tests unitaires</h3>
       </li>
       <li class="slide">
-         <h3>Run a complete different suite on Internet Explorer<h3>
+          <h3>Ne pas tout tester par contre (cas aux limites, tests trop fragiles ou compliqués) ⇒ <abbr title="Keep it simple stupid">KISS</abbr>, <abbr title="You ain’t gonna need it">YAGNI</abbr></h3>
       </li>
       <li class="slide">
-         <h3>Integration tests are slow. Learn to run them in parallel<h3>
+         <h3>Si vous testez sous Internet Explorer, utilisez une suite minimaliste (lenteur, fragilité)</h3>
+      </li>
+      <li class="slide">
+         <h3>Les tests d’intégration sont lents : lancez les en parallèle et peut-être pas à chaque commit</h3>
       </li>
    </ol>               
 </section>
    
 <section class="slide" id="steps">
-   <h2>Let's start - Navigation steps</h2>
+   <h2>Étapes de navigation</h2>
    <pre>
       <code>
         var casper = require('casper').create();
@@ -166,7 +160,7 @@
         casper.<mark>then</mark>(function() {
         });
 
-        casper.<mark>thenClick('element'</mark>, function() {
+        casper.<mark>thenClick('link'</mark>, function() {
         });
 
         casper.then().<mark>repeat(2, </mark>function() {
@@ -182,47 +176,49 @@
 </section>
 
 <section class="slide" id="selectors">
-   <h2>CSS3 Selectors are the right... XPath</h2>
-   <pre>
-      <code>
-      var x = require('casper')<mark>.selectXPath</mark>
-
-      casper.thenOpen('http://domain.tld/page.html', function() {
-         this.test.assertExists(<mark>x('//*[@id="plop"]')</mark>, 'the element exists');
-      });
-      </code>
-   </pre>
+    <h2>Sélecteurs : CSS, label, XPath</h2>
    <pre>
       <code>
       casper.start('http://domain.tld/page.html', function() {
-         this.test.assertExists(<mark>'#plop'</mark>, 'the element exists');
+         this.test.assertExists(<mark>'#logo'</mark>, 'The logo exists');
       });
 
       casper.then(function() {
-         this.click(<mark>'h3.r a'</mark>);
+         this.click(<mark>'.geoEntity.restaurant a'</mark>);
       });
 
       casper.then(function() {
-         this.<mark>clickLabel('My link is beautiful'</mark>, 'a');
+         this.<mark>clickLabel('Fermer la fenêtre'</mark>);
       });
-
-      casper.run();
       </code>
    </pre>
+   <pre>
+      <code>
+        var <mark>x</mark> = require('casper').<mark>selectXPath</mark>;
+
+        casper.thenOpen('http://domain.tld/page.html', function() {
+            this.click(<mark>x('//*[@id="logo"]')</mark>);
+        });
+       </code>
+    </pre>
+    <ul>
+        <li><h3>Privilégiez le sélecteur le plus lisible</h3></li>
+        <li><h3>Attention à choisir le sélecteur le plus stable</h3></li>
+    </ul>
 </section>
 
 <section class="slide" id="fills">
-   <h2>Form fill and upload... upload !!</h2>
+   <h2>Formulaires</h2>
    <pre>
       <code>
          &lt;form action="/contact" <mark>id="contact-form" enctype="multipart/form-data</mark>"&gt;
              &lt;input <mark>type="text"</mark> name="subject"&gt;
              &lt;input <mark>type="radio"</mark> name="civility" value="Mr"/&gt; Mr
-             &lt;input <mark>type="radio"</mark> name="civility" value="Mrs"/&gt; Mrs
+             &lt;input <mark>type="radio"</mark> name="civility" value="Mme"/&gt; Mme
              &lt;input type="text" name="name"/&gt;
              &lt;input type="email" name="email"/&gt;
              &lt;input <mark>type="file"</mark> name="attachment"/&gt;
-             &lt;input type="checkbox" name="cc"/&gt; Receive a copy
+             &lt;input type="checkbox" name="cc"/&gt; Copie carbone
              &lt;input <mark>type="submit"</mark>/>
          &lt;/form>
       </code>
@@ -231,12 +227,12 @@
       <code>
       casper.start('http://some.tld/contact.form', function() {
          this.<mark>fill('form#contact-form'</mark>, {
-              'subject':    'I am watching you',
+              'subject':    'Réclamation',
               'civility':   <mark>'Mr',</mark>
               'name':       'Chuck Norris',
               'email':      'chuck@norris.com',
               'cc':         <mark>true,</mark>
-              'attachment': <mark>'/Users/chuck/roundhousekick.doc'</mark>
+              'attachment': <mark>'/Users/chuck/i-am-not-happy.doc'</mark>
           }, <mark>true</mark>);
       });
       </code>
@@ -245,74 +241,103 @@
 
 <section class="slide" id="waitFor">
 <h2>waitFor, waitWhile</h2>
+    <pre>
+       <code>
+       casper.<mark>waitForSelector('.tweet-row'</mark>, function() {});
+
+       casper.<mark>waitWhileSelector('.selector'</mark>, function() {});
+
+       casper.<mark>waitUntilVisible('.tweet-row'</mark>, function() {});
+
+       casper.<mark>waitWhileVisible('.selector'</mark>, function() {});
+
+       casper.<mark>waitForPopup(/popup\.html$/</mark>, function() {});
+
+       casper.<mark>waitForResource("foobar.png")</mark>, function() {});
+       </code>
+    </pre>
    <pre>
       <code>
       casper.<mark>waitFor</mark>(function check() {
-          <mark>// Anything !</mark>
-          return this.evaluate(function() {
-              return document.querySelectorAll('ul.your-list li').length > 2;
-          });
+          ...
       }, function <mark>then()</mark> {
-         <mark>// something to execute when check() is ok</mark>
-         this.captureSelector('yoursitelist.png', 'ul.your-list');
+          ...
       }, function <mark>timeout()</mark> {
-         <mark>// something to execute if check has failed</mark>
-         this.echo("I can't haz my screenshot.").exit();
+         ...
       });
-      </code>
-   </pre>
-   <pre>
-      <code>
-      casper.<mark>waitForSelector('.tweet-row'</mark>, function() {});
-      casper.<mark>waitWhileSelector('.selector'</mark>, function() {});
-
-      casper.<mark>waitUntilVisible('.tweet-row'</mark>, function() {});
-      casper.<mark>waitWhileVisible('.selector'</mark>, function() {});
-
-      casper.<mark>waitForPopup(/popup\.html$/</mark>, function() {});
-      this.<mark>waitForResource("foobar.png")</mark>;
       </code>
    </pre>
 </section>
 
 <section class="slide" id="evaluates">
-   <h2>Evaluates is a hard Worker</h2>
+   <h2>Évaluation de code dans le navigateur</h2>
    <pre>
       <code>
-      casper.<mark>evaluate</mark>(function(username, password) {<mark class="alt">
-          document.querySelector('#username').value = username;
-          document.querySelector('#password').value = password;
-          document.querySelector('#submit').click();</mark>
-      }, <mark>'sheldon.cooper', 'b4z1ng4');
+        casper.waitFor(function check() {
+            return this.<mark>evaluate</mark>(function(<mark>zoom</mark>) {
+                return $('.slider-handler').css('bottom') === zoom;
+            }, <mark>{'zoom': '50%'}</mark>);
+        });
       </code>
    </pre>
    <pre>
       <code>
-      casper = require('casper').create {
-          <mark>clientScripts: ["includes/underscore-min.js"]</mark>
-          <mark>remoteScripts: ["http://code.jquery.com/jquery-1.9.1.min.js"]</mark>
-      }
-      </code>
-   </pre>
-   <pre>
-      <code>
-      this.test.<mark>assertEval</mark>(function(title) 
-      }, 'Google', 'google.fr title is "Google"');
+      casper.start(<mark>'http://www.google.fr/'</mark>, function() {
 
-      this.test.<mark>assertEvalEquals</mark>(function() {
-         return document.title;
-      }, 'Google', 'google.fr title is "Google"');
+          this.test.<mark>assertEval</mark>(function() {
+              return document.querySelectorAll('form').length > 0;
+          }, 'google.fr has at least one form');
+
+          this.test.<mark>assertEval</mark>(function() {
+              return document.title === title;
+          }, 'google.fr title is "Google"', 'Google');
+
+      });
       </code>
    </pre>
 </section>
 
 <section class="slide" id="assertions">
    <h2>Assertions</h2>
-   <h4>True</h4>
+   <ul>
+       <li>assert()
+       <li>assertDoesntExist()
+       <li>assertEquals()
+       <li>assertEval()
+       <li>assertEvalEquals()
+       <li>assertExists()
+       <li>assertFalsy()
+       <li>assertField()
+       <li>assertHttpStatus()
+       <li>assertMatch()
+       <li>assertNot()
+       <li>assertNotEquals()
+       <li>assertNotVisible()
+       <li>assertRaises()
+       <li>assertResourceExists()
+       <li>assertSelectorDoesntHaveText()
+       <li>assertSelectorExists()
+       <li>assertSelectorHasText()
+       <li>assertTextExists()
+       <li>assertTextDoesntExist()
+       <li>assertTitle()
+       <li>assertTitleMatch()
+       <li>assertTruthy()
+       <li>assertType()
+       <li>assertUrlMatch()
+       <li>assertVisible()
+   </ul>
 </section>
 
 <section class="slide" id="screenshots">
-   <h2>Screenshots & Downloads</h2>
+   <h2>Captures d’écrans</h2>
+   <pre>
+      <code>
+      casper.start().thenOpen('http://google.com', function() {
+          this.<mark>capture</mark>('google.png');
+      });
+      </code>
+   </pre>
    <pre>
       <code>
       casper.start('http://www.weather.com/', function() {
@@ -320,22 +345,40 @@
       });
       </code>
    </pre>
+    <pre>
+       <code>
+        casper.test.<mark>on</mark>("<mark>fail</mark>", function(<mark>failure</mark>) { // Capture en cas d’erreur
+            var fileName = <mark>failure</mark>.file.split("/"); // Fichier de test
+            fileName = fileName[fileName.length-1].split('.')[0]; // Sans l’extension
+            this.<mark>capture</mark>('fail-' + failure.type + '-' + fileName);
+        });
+        </code>
+    </pre>
+</section>
+
+<section class="slide" id="download">
+   <h2>Téléchargements</h2>
    <pre>
       <code>
-      casper.start().<mark>zoom(2)</mark>.thenOpen('http://google.com', function() {
-          this.capture('big-google.png');
-      });
-      </code>
-   </pre>
-   <pre>
-      <code>
-      this.<mark>download</mark>(url, 'google_company.html');
+      this.<mark>download</mark>('http://www.google.com', 'google_homepage.html');
       </code>
    </pre>
 </section>
 
+<section class="slide" id="tips">
+    <h2>Tips and tricks</h2>
+    <pre>
+       <code>
+       casper = require('casper').create {
+           <mark>clientScripts: ["includes/underscore-min.js"]</mark>
+           <mark>remoteScripts: ["http://code.jquery.com/jquery-1.9.1.min.js"]</mark>
+       }
+       </code>
+    </pre>
+</section>
+
 <section class="slide" id="events">
-   <h2>events and filters</h2>
+   <h2>Événements et filtres</h2>
    <pre>
       <code>
       casper.<mark>on('open'</mark>, function(<mark>location, settings</mark>) {
@@ -365,22 +408,22 @@
 </section>
 
 <section class="slide" id="debug">
-   <h2>Drawback: Debugging</h2>
+   <h2>Débogage</h2>
    <ol>
       <li>
-         <h3>From the creator himself: Debugging is hard.<h3>
+         <h3>Par le créateur lui-même : "Debugging is hard"<h3>
       </li>
       <li>
-         <h3>PhantomJS don't give many useful informations about the failure.<h3>
+         <h3>PhantomJS ne donne pas beaucoup d’informations<h3>
       </li>
       <li>
-         <h3>Advice 1: Always name the functions.<h3>
+         <h3>Conseil 1 : Soignez les messages d’assertions<h3>
       </li>
       <li>
-         <h3>Advice 2: There is a bookmarklet to test ClientUtil on your favourite browser. Use it.<h3>
+         <h3>Conseil 2 : Nommez vos fonctions anonymes<h3>
       </li>
       <li>
-         <h3>Advice 3: Use verbose mode.<h3>
+         <h3>Conseil 3 : Activez les traces :<h3>
       </li>
       <pre>
          <code>
@@ -393,8 +436,19 @@
    </ol>
 </section>
 
+<section class="slide" id="meet-functional">
+    <h2>Travaillons ensemble</h2>
+    <ul>
+        <li><h3>Travaillons avec le PO et l’<abbr title="Assurance Qualité Logicielle">AQL</abbr></h3></li>
+        <li><h3>Utilisons les tests d’acceptances pour faire les scénarios</h3></li>
+        <li><h3>Utilisons l’expérience de l’<abbr title="Assurance Qualité Logicielle">AQL</abbr> (priorisation, cas à forte valeur ajouté)</h3></li>
+        <li><h3>Lions les tests (conventions de nommage ?)</h3></li>
+        <li><h3>Exploitez les rapports de tests</h3></li>
+    </ul>
+</section>
+
 <section class="slide" id="more">
-   <h2>Many more features</h2>
+   <h2>Pleins d’autres fonctionnalités</h2>
    <br />
    <h4><u>Assertions, Utils, ClientUtils, Casper options, Logging, etc...</u></h4>
    <br />
@@ -421,8 +475,8 @@
 </section>
 
 <section class="slide" id="demo">
-   <h2>Demo: Let's see some code now</h2>
-   <img src="cat.jpg" />
+   <h2>Démo</h2>
+   <img src="imgs/cat.jpg" />
 </section>
 
 <!-- deck.navigation snippet -->
@@ -448,7 +502,7 @@
 <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 
-<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<!-- Grab CDN jQuery, with a protocolrelative URL; fall back to local if offline -->
 <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
 <script>window.jQuery || document.write('<script src="./js/jquery-1.7.min.js"><\/script>')</script>
 
